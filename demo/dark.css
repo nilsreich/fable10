@@ -1,0 +1,51 @@
+/* Beispiel-Override: Dark/OLED-Theme rein über lmi-*-Klassen.
+   Aktiv, sobald <body class="dark"> gesetzt ist — kein Eingriff in den Core. */
+
+body.dark {
+  background: #000;
+  color: #e5e7eb;
+}
+
+body.dark output {
+  background: #111827;
+  color: #e5e7eb;
+}
+
+body.dark .lmi-editor {
+  background: #000;
+  color: #f9fafb;
+  border-color: #374151;
+}
+
+body.dark .lmi-editor:focus {
+  outline-color: #60a5fa;
+}
+
+body.dark .lmi-placeholder {
+  border-color: #4b5563;
+  background: rgba(75, 85, 99, 0.25);
+}
+
+body.dark .lmi-keyboard {
+  background: #111827;
+}
+
+body.dark .lmi-kb-tab {
+  background: #1f2937;
+  color: #d1d5db;
+}
+
+body.dark .lmi-kb-tab[aria-selected='true'] {
+  background: #374151;
+  color: #fff;
+}
+
+body.dark .lmi-kb-key {
+  background: #1f2937;
+  color: #f9fafb;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+body.dark .lmi-kb-key:active {
+  background: #1e3a8a;
+}

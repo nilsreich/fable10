@@ -1,0 +1,244 @@
+/* LiteMathInput — Basis-Theme.
+   Alles ist Light DOM: jede Regel kann von außen über die lmi-*-Klassen
+   überschrieben werden. Keine Fonts als Dependency, nur Fallback-Kette. */
+
+/* ---------- Editor ---------- */
+
+.lmi-editor {
+  font-family: "STIX Two Math", "Cambria Math", Georgia, serif;
+  font-size: 1.25rem;
+  display: inline-block;
+  min-width: 8em;
+  padding: 0.4em 0.6em;
+  border: 1px solid #b6b6b6;
+  border-radius: 6px;
+  background: #fff;
+  color: #1a1a1a;
+  cursor: text;
+  line-height: 1.4;
+}
+
+.lmi-editor:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 1px;
+}
+
+.lmi-row {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.lmi-char,
+.lmi-symbol {
+  white-space: pre;
+}
+
+.lmi-var {
+  font-style: italic;
+}
+
+.lmi-op {
+  padding: 0 0.18em;
+}
+
+/* ---------- Cursor & Platzhalter ---------- */
+
+.lmi-cursor {
+  display: inline-block;
+  width: 1.5px;
+  align-self: stretch;
+  min-height: 1em;
+  background: currentColor;
+  animation: lmi-blink 1.06s steps(2, start) infinite;
+  pointer-events: none;
+}
+
+.lmi-editor:not(:focus-within) .lmi-cursor {
+  visibility: hidden;
+}
+
+@keyframes lmi-blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+.lmi-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0.7em;
+  min-height: 1em;
+  border: 1px dashed #9ca3af;
+  border-radius: 2px;
+  background: rgba(156, 163, 175, 0.15);
+  margin: 0 1px;
+}
+
+/* ---------- Strukturen ---------- */
+
+.lmi-frac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  margin: 0 0.12em;
+  text-align: center;
+}
+
+.lmi-frac-num,
+.lmi-frac-den {
+  display: block;
+  padding: 0 0.25em;
+}
+
+.lmi-frac-den {
+  border-top: 1.5px solid currentColor;
+}
+
+.lmi-supsub {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: middle;
+  margin-left: 0.05em;
+}
+
+.lmi-sup,
+.lmi-sub {
+  font-size: 0.7em;
+  line-height: 1.15;
+}
+
+.lmi-sup {
+  align-self: flex-start;
+  transform: translateY(-0.55em);
+}
+
+.lmi-sub {
+  align-self: flex-start;
+  transform: translateY(0.4em);
+}
+
+.lmi-supsub-both .lmi-sup {
+  transform: translateY(-0.25em);
+}
+
+.lmi-supsub-both .lmi-sub {
+  transform: translateY(0.25em);
+}
+
+.lmi-sqrt {
+  display: inline-flex;
+  align-items: stretch;
+  margin: 0 0.1em;
+}
+
+.lmi-sqrt-sym {
+  display: inline-flex;
+  align-items: flex-start;
+  font-size: 1.1em;
+  line-height: 1.1;
+}
+
+.lmi-sqrt-body {
+  border-top: 1.5px solid currentColor;
+  padding: 0.05em 0.15em 0 0.1em;
+}
+
+.lmi-paren {
+  display: inline-flex;
+  align-items: center;
+}
+
+.lmi-paren-delim {
+  display: inline-block;
+}
+
+/* ---------- Virtuelle Tastatur ---------- */
+
+.lmi-keyboard {
+  font-family: system-ui, -apple-system, sans-serif;
+  display: block;
+  max-width: 26rem;
+  padding: 8px;
+  border-radius: 10px;
+  background: #e5e7eb;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.lmi-kb-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.lmi-kb-tab {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 8px;
+  background: #d1d5db;
+  font: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.lmi-kb-tab[aria-selected='true'] {
+  background: #fff;
+  font-weight: 600;
+}
+
+.lmi-kb-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.lmi-kb-row:last-child {
+  margin-bottom: 0;
+}
+
+.lmi-kb-key {
+  flex: 1 1 0;
+  min-width: 44px;
+  min-height: 44px;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  font-family: "STIX Two Math", "Cambria Math", Georgia, serif;
+  font-size: 1.15rem;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.lmi-kb-key:active {
+  background: #dbeafe;
+  transform: translateY(1px);
+}
+
+.lmi-kb-key[data-span='2'] {
+  flex-grow: 2;
+}
+
+.lmi-kb-key[data-span='3'] {
+  flex-grow: 3;
+}
+
+/* ---------- Screenreader-Live-Region ---------- */
+
+.lmi-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

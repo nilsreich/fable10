@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LiteMathInput — Playground</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="./theme.css" />
+  <link rel="stylesheet" href="./dark.css" />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 720px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    output {
+      display: block;
+      font-family: ui-monospace, monospace;
+      background: #f3f4f6;
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      margin: 0.5rem 0 1rem;
+      min-height: 1.5em;
+      white-space: pre-wrap;
+    }
+    .hint { color: #6b7280; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <h1>LiteMathInput</h1>
+  <p class="hint">
+    Tippen: Ziffern/Buchstaben, <kbd>/</kbd> Bruch, <kbd>^</kbd> <kbd>_</kbd> Hoch/Tief,
+    <kbd>(</kbd> Klammer, <kbd>*</kbd> ·, Pfeiltasten zum Navigieren, <kbd>Enter</kbd> = Submit.
+  </p>
+
+  <div id="editor"></div>
+
+  <p>
+    <label><input type="checkbox" id="dark" /> Dark/OLED-Theme (Beispiel-Override)</label>
+  </p>
+  <p>
+    <label for="preset">Preset:</label>
+    <select id="preset">
+      <option value="basic">Basic (Grundrechenarten)</option>
+      <option value="algebra" selected>Algebra (Terme &amp; Gleichungen)</option>
+      <option value="analysis">Analysis (Oberstufe)</option>
+    </select>
+  </p>
+  <div id="keyboard"></div>
+
+  <h2>LaTeX</h2>
+  <output id="latex"></output>
+
+  <h2>Tokens</h2>
+  <output id="tokens"></output>
+
+  <h2>Submit</h2>
+  <output id="submit">–</output>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
