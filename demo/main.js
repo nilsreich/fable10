@@ -1,0 +1,24 @@
+// Reines HTML+JS-Playground. `bun run demo:build` erzeugt ./lmi.js aus dem Core.
+import { MathEditor } from './lmi.js';
+
+const latexOut = document.getElementById('latex');
+const tokensOut = document.getElementById('tokens');
+const submitOut = document.getElementById('submit');
+
+const editor = new MathEditor(document.getElementById('editor'), {
+  ariaLabel: 'Mathematische Eingabe',
+  onChange: (latex) => update(latex),
+  onSubmit: (latex) => (submitOut.textContent = latex || '(leer)'),
+});
+
+function update(latex) {
+  latexOut.textContent = latex || '(leer)';
+  tokensOut.textContent = editor
+    .getTokens()
+    .map((t) => `${t.type}${t.value ? `(${t.value})` : ''}`)
+    .join(' ');
+}
+
+editor.setLatex('\\frac{x^{2}+1}{2}');
+update(editor.getLatex());
+editor.focus();

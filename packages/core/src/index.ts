@@ -14,3 +14,5 @@ export { row, char, frac, sqrt, paren, sym } from './model.js';
 export { parseLatex, toLatex, LatexParseError } from './latex.js';
 export { toTokens } from './tokens.js';
 export type { Token, TokenType } from './tokens.js';
+export { MathEditor } from './editor.js';
+export type { MathEditorOptions } from './editor.js';
