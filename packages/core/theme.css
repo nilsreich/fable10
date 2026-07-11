@@ -156,6 +156,79 @@
   display: inline-block;
 }
 
+/* ---------- Virtuelle Tastatur ---------- */
+
+.lmi-keyboard {
+  font-family: system-ui, -apple-system, sans-serif;
+  display: block;
+  max-width: 26rem;
+  padding: 8px;
+  border-radius: 10px;
+  background: #e5e7eb;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.lmi-kb-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.lmi-kb-tab {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 8px;
+  background: #d1d5db;
+  font: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.lmi-kb-tab[aria-selected='true'] {
+  background: #fff;
+  font-weight: 600;
+}
+
+.lmi-kb-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.lmi-kb-row:last-child {
+  margin-bottom: 0;
+}
+
+.lmi-kb-key {
+  flex: 1 1 0;
+  min-width: 44px;
+  min-height: 44px;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  font-family: "STIX Two Math", "Cambria Math", Georgia, serif;
+  font-size: 1.15rem;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.lmi-kb-key:active {
+  background: #dbeafe;
+  transform: translateY(1px);
+}
+
+.lmi-kb-key[data-span='2'] {
+  flex-grow: 2;
+}
+
+.lmi-kb-key[data-span='3'] {
+  flex-grow: 3;
+}
+
 /* ---------- Screenreader-Live-Region ---------- */
 
 .lmi-live {

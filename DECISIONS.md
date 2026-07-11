@@ -19,3 +19,9 @@ Eine Zeile pro Entscheidung: Problem → Entscheidung → Begründung.
 - setLatex feuert kein onChange → programmatische Wertsetzung ist keine Nutzereingabe → verhindert Endlosschleifen in kontrollierten Wrappern.
 - Vollständiges Re-Rendering pro Mutation statt inkrementellem DOM-Diffing → Formeln sind klein (Schulmathematik), Re-Render ist O(Baumgröße) und hält den Code drastisch kleiner.
 - Maus-Klick-Positionierung des Cursors → nicht implementiert (Fokus per Klick, Navigation per Pfeiltasten/virtueller Tastatur) → nicht in der Spec gefordert, spart deutlich Bundle-Größe.
+- Key.command-Semantik → Commands sind Editor-Keys (gleiches Pipeline wie physisches Tippen) plus Aliasse left/right/up/down/backspace/enter → eine einzige Eingabe-Pipeline statt zwei Codepfaden.
+- Bruch-Taste (÷, a∕b) → nutzt den `/`-Smart-Trigger statt leeres `\frac{}{}` einzufügen → konsistentes Verhalten zwischen physischer und virtueller Tastatur.
+- `ln`- und `e`-Tasten im Analysis-Preset → fügen einfache Buchstaben-Chars ein (`\ln`/`\mathrm{e}` sind außerhalb des LaTeX-Scopes) → Spec: Presets nur soweit der Scope reicht.
+- Tastatur-Aktivierung → `pointerdown` mit `preventDefault` (Latenz, Fokuserhalt) + `click` mit `detail===0` als Fallback → Screenreader/Tastatur-Nutzer aktivieren Buttons per Enter/Space, das kommt als detail-0-Click an.
+- Tab-Leiste nur bei >1 Tab, `hidden`-Attribut für inaktive Panels → weniger DOM/ARIA-Rauschen bei Single-Tab-Layouts.
+- span-Tasten via `data-span`-Attribut + CSS `flex-grow` statt Inline-Styles → bleibt komplett von außen stylebar.

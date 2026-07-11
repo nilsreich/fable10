@@ -1,5 +1,11 @@
 // Reines HTML+JS-Playground. `bun run demo:build` erzeugt ./lmi.js aus dem Core.
-import { MathEditor } from './lmi.js';
+import {
+  MathEditor,
+  MathKeyboard,
+  PRESET_ALGEBRA,
+  PRESET_ANALYSIS,
+  PRESET_BASIC,
+} from './lmi.js';
 
 const latexOut = document.getElementById('latex');
 const tokensOut = document.getElementById('tokens');
@@ -18,6 +24,17 @@ function update(latex) {
     .map((t) => `${t.type}${t.value ? `(${t.value})` : ''}`)
     .join(' ');
 }
+
+const PRESETS = { basic: PRESET_BASIC, algebra: PRESET_ALGEBRA, analysis: PRESET_ANALYSIS };
+const keyboardEl = document.getElementById('keyboard');
+const presetSelect = document.getElementById('preset');
+let keyboard = new MathKeyboard(keyboardEl, editor, PRESETS[presetSelect.value]);
+
+presetSelect.addEventListener('change', () => {
+  keyboard.destroy();
+  keyboard = new MathKeyboard(keyboardEl, editor, PRESETS[presetSelect.value]);
+  editor.focus();
+});
 
 editor.setLatex('\\frac{x^{2}+1}{2}');
 update(editor.getLatex());

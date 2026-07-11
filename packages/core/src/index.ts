@@ -16,3 +16,6 @@ export { toTokens } from './tokens.js';
 export type { Token, TokenType } from './tokens.js';
 export { MathEditor } from './editor.js';
 export type { MathEditorOptions } from './editor.js';
+export { MathKeyboard } from './keyboard.js';
+export type { Key, KeyboardTab, KeyboardLayout } from './keyboard.js';
+export { PRESET_BASIC, PRESET_ALGEBRA, PRESET_ANALYSIS } from './presets.js';
