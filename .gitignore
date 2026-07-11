@@ -1,5 +1,4 @@
 node_modules/
 dist/
-demo/lmi.js
-demo/lmi.js.map
+.vercel/
 *.log

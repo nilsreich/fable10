@@ -35,7 +35,18 @@ editor.getTokens();  // flaches Token-Array für Backend-Validierung
 ```
 
 Entwickeln: `bun install`, dann `bun run verify` (Typecheck + Tests + Size-Budget)
-und `bun run demo` (Playground auf http://localhost:8080).
+und `bun run demo` (baut nach `dist/` und serviert auf http://localhost:8080).
+
+## Demo auf Vercel deployen
+
+Das Repo ist deploy-fertig: `vercel.json` baut das Demo (`bun run demo:build`)
+als self-contained statische App nach `dist/` und liefert sie aus.
+
+1. Repo bei [Vercel](https://vercel.com/new) importieren (Framework-Preset: „Other")
+2. Nichts weiter konfigurieren — Install-/Build-Command und Output-Directory
+   kommen aus `vercel.json`
+
+Alternativ per CLI: `vercel deploy` im Repo-Root.
 
 ## API-Referenz
 
