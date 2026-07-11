@@ -1,0 +1,22 @@
+{
+  "name": "litemath",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit -p packages/core",
+    "test": "vitest run",
+    "size": "node scripts/size.mjs",
+    "verify": "bun run typecheck && bun run test && bun run size",
+    "demo:build": "node scripts/build-demo.mjs",
+    "demo": "node scripts/build-demo.mjs && bun demo/serve.ts"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "happy-dom": "^18.0.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.0"
+  }
+}
