@@ -25,3 +25,8 @@ Eine Zeile pro Entscheidung: Problem → Entscheidung → Begründung.
 - Tastatur-Aktivierung → `pointerdown` mit `preventDefault` (Latenz, Fokuserhalt) + `click` mit `detail===0` als Fallback → Screenreader/Tastatur-Nutzer aktivieren Buttons per Enter/Space, das kommt als detail-0-Click an.
 - Tab-Leiste nur bei >1 Tab, `hidden`-Attribut für inaktive Panels → weniger DOM/ARIA-Rauschen bei Single-Tab-Layouts.
 - span-Tasten via `data-span`-Attribut + CSS `flex-grow` statt Inline-Styles → bleibt komplett von außen stylebar.
+- Wrapper-Distribution → Packages liefern TypeScript-Quellen (`main: src/…`), keine Build-Artefakte → Publishing-Pipeline ist explizit Nicht-Ziel; Consumer-Bundler (Vite & Co.) verarbeiten TS/Svelte direkt.
+- React-Engine-Zugriff → `useImperativeHandle` liefert `{ getEditor() }` statt der rohen Instanz → Handle bleibt über Re-Mounts stabil, kein stale-Ref-Problem.
+- Svelte-Wrapper-Effekt-Reihenfolge → Editor-Erstellung, value-Sync und Tastatur als drei getrennte `$effect`s in Deklarationsreihenfolge → value-Sync und Keyboard sehen garantiert den fertigen Editor, Layout-Wechsel zerstört nur die Tastatur.
+- `@sveltejs/vite-plugin-svelte` auf v6 + vite 7 gepinnt → v7 verlangt vite 8, Vitest 3.2 unterstützt maximal vite 7 → einzige kompatible Kombination (nur devDependencies, Core bleibt dependency-frei).
+- Dark-Theme-Beispiel als `demo/dark.css` mit `body.dark`-Overrides → belegt die Von-außen-Stylebarkeit rein über `lmi-*`-Klassen ohne Core-Änderung.

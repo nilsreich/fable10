@@ -36,6 +36,10 @@ presetSelect.addEventListener('change', () => {
   editor.focus();
 });
 
+document.getElementById('dark').addEventListener('change', (e) => {
+  document.body.classList.toggle('dark', e.target.checked);
+});
+
 editor.setLatex('\\frac{x^{2}+1}{2}');
 update(editor.getLatex());
 editor.focus();
